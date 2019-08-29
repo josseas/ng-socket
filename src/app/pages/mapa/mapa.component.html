@@ -1,0 +1,121 @@
+<h2>MAPA EN TIEMPO REAL</h2>
+<hr>
+
+<div class="row">  
+    
+    <div class="col-sm-auto">
+        
+        <div class="radio-group">
+            <input 
+                type="radio"
+                id="action_add" 
+                name="actions"
+                [(ngModel)]="action"
+                [value]="'ADD'"
+                (change)="ChangeOptionActions()">
+            <label class="lbl" for="action_add" >
+                <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Agregar
+            </label>
+            <input
+                type="radio"
+                id="action_move"
+                name="actions"
+                [(ngModel)]="action"
+                [value]="'MOVE'"
+                (change)="ChangeOptionActions()">
+            <label class="lbl" for="action_move" >
+                <i class="fa fa-arrows" aria-hidden="true"></i>&nbsp;Mover
+            </label>
+            <input 
+                type="radio"
+                id="action_remove"
+                name="actions"
+                [(ngModel)]="action"
+                [value]="'REMOVE'"
+                (change)="ChangeOptionActions()">
+            <label class="lbl" for="action_remove" >
+                <i class="fa fa-times" aria-hidden="true"></i>&nbsp;Eliminar
+            </label>
+        </div>
+            
+    </div>
+
+    <div class="col-sm-auto">
+        
+        <div class="radio-group">
+            <input 
+                type="radio"
+                id="type_tree" 
+                name="types"
+                [(ngModel)]="type"
+                [value]="'TREE'"
+                (change)="ChangeOptionTypes()">
+            <label class="lbl" for="type_tree">
+                    <i class="fa fa-tree" aria-hidden="true"></i>&nbsp;Arboles
+            </label>
+            <input
+                type="radio"
+                id="type_person"
+                name="types"
+                [(ngModel)]="type"
+                [value]="'PERSON'"
+                (change)="ChangeOptionTypes()">
+            <label class="lbl" for="type_person">
+                <i class="fa fa-user" aria-hidden="true"></i>&nbsp;Persona
+            </label>
+        </div>            
+            
+    </div>
+
+    <div class="col-sm-4" *ngIf="action === 'ADD'">
+        
+        <div class="input-group flex-nowrap">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="addon-wrapping">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                </span>
+            </div>
+            <input
+                type="text" 
+                class="form-control" 
+                [(ngModel)]="nombreMarker"
+                placeholder="Ingrese un nombre para el marcador..." 
+                aria-label="Ingrese un nombre para el marcador..." 
+                aria-describedby="addon-wrapping">
+        </div>
+            
+    </div>
+
+</div>
+
+<hr>
+
+<agm-map class="map"
+    [latitude]="latitude"
+    [longitude]="longitude"
+    [zoom]="zoom"
+    [mapTypeId]="mapType"
+    (mapClick)="AddMarker($event.coords.lat, $event.coords.lng)">
+    <agm-marker
+        *ngFor="let marker of markers"
+        [latitude]="marker.lat"
+        [longitude]="marker.lng"
+        [opacity]="marker.alpha"
+        [iconUrl]="marker.url"
+        [markerDraggable]="drag"
+        (drag)="MarkerDrag($event, marker)"
+        (mouseOver)="MouseOver(marker)"
+        (mouseOut)="MouseOut(marker)"
+        (markerClick)="ClickMarcador(marker)">
+        <agm-info-window [isOpen]="marker.visible">
+            
+            <strong style="display: block; font-size: 16px; font-weight: bold; text-align: center;">{{ marker.name }}</strong>
+            <!-- <br /> -->
+            <!-- <div style="color: #333; font-size: 12px">
+                <strong>Lat:</strong> {{ marker.lat }}
+                <strong>Lng:</strong> {{ marker.lng }}
+            </div> -->
+    
+        </agm-info-window>
+      </agm-marker>
+</agm-map>

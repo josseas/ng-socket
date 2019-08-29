@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">&lt;Node - Socket.IO&gt;</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/mensajes']" routerLinkActive="router-link-active" >
+                    <i class="fa fa-comments" aria-hidden="true"></i>&nbsp;Chat
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/grafica']" routerLinkActive="router-link-active" >
+                    <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp;Grafica
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/encuesta']" routerLinkActive="router-link-active" >
+                    <i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;Encuesta
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/mapa']" routerLinkActive="router-link-active" >
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Google Maps
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/colas']" routerLinkActive="router-link-active" >
+                <i class="fa fa-users" aria-hidden="true"></i>&nbsp;Colas
+                </a>
+            </li>
+        </ul>
+        <span class="navbar-text" style="margin-right: 10px;" *ngIf="IsAuth()">
+            <strong style="font-size: 16px;">
+                <i class="fa fa-user" aria-hidden="true"></i>&nbsp;{{ socket.GetUser().nombre }}
+            </strong>
+        </span>
+        <button class="btn btn-danger" (click)="Logout()" *ngIf="IsAuth()">
+            Salir
+        </button>
+    </div>
+</nav>

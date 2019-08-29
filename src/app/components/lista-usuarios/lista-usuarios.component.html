@@ -1,0 +1,17 @@
+<h2>Usuarios Activos</h2>
+
+<div>
+    <li class="list-group-item" *ngFor="let usuario of usuarios">
+        <i class="fa fa-user" aria-hidden="true"></i>
+        <strong>
+            &nbsp;{{ usuario.nombre }}
+        </strong>
+        <span class="socket-sala">
+            {{ usuario.sala }}
+        </span>
+        <br />
+        <span class="socket-id">
+            <i class="fa fa-id-card" aria-hidden="true"></i>&nbsp;{{ usuario.id }}
+        </span>
+    </li>
+</div>

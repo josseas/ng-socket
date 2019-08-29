@@ -1,0 +1,62 @@
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <form [formGroup]="encuestaForm" (ngSubmit)="Submit()">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2 class="text-center">ENCUESTA EN TIEMPO REAL</h2><hr>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="mes">Alternativa</label>
+                                <select class="form-control" id="alternativa" formControlName="alternativa">
+                                    <option *ngFor="let a of alt" [value]="a.key">{{ a.nombre }}</option>
+                                </select>                                      
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="mes">Sexo</label>
+                                <select class="form-control" id="sexo" formControlName="sexo">
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Femenino</option>
+                                </select> 
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="form-label">Enviar Encuesta.</label><br />
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-paper-plane" aria-hidden="true"></i>&nbsp;Enviar
+                                </button>
+                            </div>
+                        </div>
+                            
+                    </div>                    
+                </form>
+            </div>
+        </div>        
+    </div>
+</div>
+<br><br>
+
+<div class="row">
+    <div class="col-md-12">
+        <div style="display: block; text-align: center;">
+            <canvas baseChart width="400" height="200"            
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [legend]="barChartLegend"
+                [chartType]="'bar'">
+            </canvas>
+        </div>
+    </div>
+</div>
