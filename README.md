@@ -3,4 +3,4 @@
 Repositorio github del Backend [API Node](https://github.com/josseas/socket-server)
 
 
-![Home](https://raw.githubusercontent.com/parzibyte/WaterPy/master/assets/ImagenV1.png)
+![Home](https://github.com/josseas/ng-socket/blob/master/src/assets/capturas/home.jpg)
