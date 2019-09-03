@@ -8,14 +8,15 @@ import { WebsocketService } from 'src/app/services/websocket.service';
 })
 export class FooterComponent implements OnInit
 {
+    public year: number;
+
     public constructor(public socket: WebsocketService)
     {
-
+        this.year = new Date().getFullYear();
     }
 
     public ngOnInit()
     {
         
     }
-
 }
